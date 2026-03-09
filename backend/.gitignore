@@ -1,0 +1,11 @@
+# Env files
+.env
+backend/.env
+
+# Node modules
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# OS va temp files
+.DS_Store

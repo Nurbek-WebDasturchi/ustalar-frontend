@@ -1,0 +1,100 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.b {
+  border: 2px solid blue;
+}
+.header {
+  height: 15%;
+  border-radius: 20px;
+  background-color: rgb(9, 93, 250);
+}
+.profile-img {
+  height: 100px;
+  width: auto;
+  border-radius: 50%;
+}
+.profile-info {
+  height: 50%;
+}
+/* chat room */
+.chat-room {
+  height: 70%;
+  border: 2px solid rgb(9, 93, 250);
+  border-radius: 20px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.chat {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 80%;
+  overflow-y: auto;
+  padding: 20px 0;
+}
+.ask-pocket {
+  display: flex;
+  justify-content: end;
+}
+.ask {
+  background-color: aliceblue;
+  min-width: 10%;
+  max-width: 40%;
+  height: auto;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 15px 15px 0 15px;
+}
+.response-pocket {
+  display: flex;
+}
+.response {
+  background-color: rgb(44, 44, 226);
+  min-width: 10%;
+  max-width: 40%;
+  height: auto;
+  padding: 10px;
+  border: 2px solid rgb(44, 44, 226);
+  color: rgb(201, 224, 209);
+  font-weight: 500;
+  border-radius: 15px 15px 15px 0;
+}
+.input-box {
+  width: 90%;
+}
+input {
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid blue;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px 10px;
+  color: wheat;
+  outline: none;
+}
+input::placeholder {
+  color: rgb(176, 194, 194);
+}
+input:focus {
+  border: 3px solid rgb(6, 245, 58);
+
+  transform: scale(1.001);
+}
+.send-btn {
+  width: 10%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  margin-left: 5px;
+  border-radius: 10px;
+  color: rgb(2, 2, 28);
+  font-weight: 700;
+}

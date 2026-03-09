@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ustalar</title>
+    <link rel="icon" href="./icons/Square-Logos-11.webp" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="p-0 mt-0">
+    <div class="main-section">
+      <div class="container mt-0 position-relative">
+        <header>
+          <nav class="border-radius">
+            <div
+              class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+              <!-- mobile nav -->
+              <div
+                class="w-100 d-flex d-md-none justify-content-between align-items-center">
+                <div class="fw-bold fs-2">Ustalar.uz</div>
+                <button class="btn btn-success menu-btn">
+                  menu <i class="bi bi-list"></i>
+                </button>
+                <button class="btn btn-danger close-btn hide">
+                  yopish <i class="bi bi-x-circle"></i>
+                </button>
+              </div>
+              <div
+                class="d-md-none links text-uppercase navbar-list gap-4 flex-column justify-content-between hide">
+                <a href="#main">Asosiy</a>
+                <a href="#ustalar">Ustalar</a>
+                <a href="#elon">E'lon </a> <br />
+                <a href="#feedback">maslahat olish </a>
+                <a href="#comment">Fikrlar </a>
+                <a href="#">info</a>
+              </div>
+              <!-- /mobile nav -->
+              <img
+                src="./icons/logo.png"
+                class="logo d-none d-md-block"
+                alt="" />
+              <div
+                class="d-none d-md-flex gap-5 px-5 links text-uppercase navbar navbar-expand-lg">
+                <a href="#main">Asosiy</a>
+                <a href="#ustalar">Ustalar</a>
+                <a href="#elon">E'lon </a>
+                <a href="#feedback">maslahat olish </a>
+                <a href="#comment">Fikrlar </a>
+                <a href="#">info</a>
+              </div>
+            </div>
+            <!-- second bar -->
+            <div class="mt-3">
+              <div class="mb-3 h-100 p-0 d-flex justify-content-between">
+                <div class="d-inline-block" style="width: 62%">
+                  <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Usta izlash"
+                    aria-label="Recipient’s username" />
+                  <button class="search-btn">Qidirish</button>
+                </div>
+                <div class="d-inline-block">
+                  <select
+                    name="region"
+                    id="region"
+                    class="custom-select"
+                    style="width: 250px">
+                    <option value="0">Hududni tanlang</option>
+                    <option value="1">Nukus</option>
+                    <option value="2">Urganch</option>
+                    <option value="3">Navoiy</option>
+                    <option value="4">Buxoro</option>
+                    <option value="5">Samarqand</option>
+                    <option value="6">Jizzax</option>
+                    <option value="7">Termiz</option>
+                    <option value="8">Qarshi</option>
+                    <option value="9">Guliston</option>
+                    <option value="10">Farg'ona</option>
+                    <option value="11">Andijon</option>
+                    <option value="12">Nurafshon</option>
+                    <option value="13">Toshkent Shahri</option>
+                  </select>
+                  <button class="ai-btn">
+                    Usta AI
+                    <img src="./icons/ai.png" alt="ss" class="ai-logo" />
+                  </button>
+                  <button class="lang-btn m-0">
+                    O'zbekcha <i class="bi bi-translate"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <main class="border-radius mt-2">
+          <section id="main" class="mt-4">
+            <div class="intro-section p-5">
+              <h1 class="text-white">
+                Bizning platformamizda istalgan qurilish mutaxasisini
+                topishingiz mumkin.
+              </h1>
+              <div class="d-flex justify-content-center gap-4 mt-5">
+                <button class="btn btn-primary px-5 py-2 fs-3">
+                  Usta topish
+                </button>
+                <button class="btn btn-primary px-5 py-2 fs-3">
+                  E'lon berish
+                </button>
+              </div>
+            </div>
+          </section>
+          <section class="mt-5 w-100" id="ustalar">
+            <h2 class="title mt-5">Ustalar katalogi</h2>
+            <div class="cards row mx-0">
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                  <img src="./img/bg-main.jpg" alt="Usta 2" />
+                  <div class="card-body">
+                    <div>Ism Familiya</div>
+                    <p><b>Mutaxassislik:</b> Santexnik</p>
+                    <p><b>Shahar:</b> Samarqand</p>
+                    <p><b>Telefon:</b> +998 91 234 56 78</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- E'LON -->
+          <section id="elon">
+            <div class="row mx-0">
+              <div class="col-12">
+                <h2 class="title mt-5">E'lon berish</h2>
+              </div>
+              <div
+                class="col-12 col-md-6 order-2 d-flex flex-column justify-content-center p-5 gap-3 elon-form mt-5">
+                <form action="#">
+                  <div class="d-flex flex-column">
+                    <label for="name" class="text-white fs-5"
+                      >Rasm yuklang
+                      <span class="text-danger fw-bold">*</span></label
+                    >
+                    <input
+                      type="file"
+                      class="name-input"
+                      id="name"
+                      placeholder="Yokida MCHJ nomi" />
+                  </div>
+                  <div class="d-flex flex-column">
+                    <label for="name" class="text-white fs-5"
+                      >Ism familyangiz
+                      <span class="text-danger fw-bold">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="name-input"
+                      id="name"
+                      placeholder="Yokida MCHJ nomi" />
+                  </div>
+                  <div class="d-flex flex-column">
+                    <label for="name" class="text-white fs-5"
+                      >Telefon raqamingiz:
+                      <span class="text-danger fw-bold">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="name-input"
+                      id="name"
+                      placeholder="Masalan: +998 99 946 15 51" />
+                  </div>
+                  <select name="jobs" id="jobs" class="custom-select bg-select">
+                    <option value="0">Mutaxassislikni tanlang</option>
+                    <option value="1">Arxitektor</option>
+                    <option value="2">Elektrik</option>
+                    <option value="3">Quruvchi</option>
+                    <option value="4">Santexnik</option>
+                    <option value="5">Payvandchi (svarchik)</option>
+                    <option value="6">Dekorativ suvoq ustasi</option>
+                    <option value="7">Laminat ustasi</option>
+                    <option value="8">Fasad ustasi</option>
+                    <option value="9">Deraza rom o‘rnatuvchi</option>
+                    <option value="10">Mebel ustasi</option>
+                    <option value="11">Eshik o‘rnatuvchi</option>
+                    <option value="12">Dizayner (interyer/eksteryer)</option>
+                  </select>
+                  <select
+                    name="cities"
+                    id="cities"
+                    class="custom-select bg-select">
+                    <option value="0">Shaharni tanlang</option>
+                    <option value="1">Nukus</option>
+                    <option value="2">Urganch</option>
+                    <option value="3">Navoiy</option>
+                    <option value="4">Buxoro</option>
+                    <option value="5">Samarqand</option>
+                    <option value="6">Jizzax</option>
+                    <option value="7">Termiz</option>
+                    <option value="8">Qarshi</option>
+                    <option value="9">Guliston</option>
+                    <option value="9">Farg'ona</option>
+                    <option value="10">Andijon</option>
+                    <option value="11">Nurafshon</option>
+                    <option value="12">Toshkent Shahri</option>
+                  </select>
+                  <button
+                    type="button"
+                    class="btn btn-primary mt-3 w-100 fw-bold fs-5">
+                    Yaratish
+                  </button>
+                </form>
+              </div>
+              <!-- right text -->
+              <div
+                class="col-12 col-md-6 order-1 p-5 d-flex flex-column justify-content-center align-items-center">
+                <h3 class="title">
+                  <span class="text-success">Ustamisiz?</span> <br />
+                  Unda bu formani to'ldiring va hunaringiz orqali daromadingizni
+                  boshlang!.
+                </h3>
+                <p class="text-success text-center">
+                  Platformamiz foydalanuvchilarining 85% i buni foydali deb
+                  hisoblaydi
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- AI Maslahat -->
+          <section id="feedback">
+            <div class="row mx-0">
+              <div class="col-12 mt-5">
+                <h3 class="title">AI dan maslahatlar</h3>
+                <h4 class="text-center text-primary">
+                  <span class="text-success fw-bold">Usta AI</span> -
+                  Uyingizning dizayni, qanday quruvchilar kerakligini va xatto
+                  kerakli ustalarni tavsiya qiluvchi tezkor AI vositasi
+                </h4>
+              </div>
+              <div
+                class="col-12 col-md-6 order-2 d-flex flex-column justify-content-center align-items-center mt-4 feedback-text">
+                <h3 class="fs-2 text-center fw-bold text-success">
+                  Bu sun'iy intelekt modeli OpenAI modeli asosida ishlaydi va
+                  platformamizda muommosiz ishlash uchun integratsiya qilingan.
+                </h3>
+                <p class="text-white">
+                  Usta qidiring, ustalik maslahatlarini oling sizga bu model
+                  yordam beradi.
+                </p>
+              </div>
+              <div
+                class="col-12 col-md-6 order-1 d-flex flex-column justify-content-center align-items-center mt-4">
+                <img src="index.html" alt="sss" class="w-50 h-auto" />
+                <h3 class="text-white fw-bold text-center">Usta AI</h3>
+                <a
+                  href="./pages/ai-chat.html"
+                  class="btn btn-outline-primary fw-bold w-100"
+                  >AI ni ishga tushirish</a
+                >
+              </div>
+            </div>
+          </section>
+          <!-- FIKRLAR -->
+          <section id="comment">
+            <div class="row mx-0 mt-5 d-flex align-items-center">
+              <div class="col-12">
+                <h3 class="title">Platformamiz haqida fikrlar</h3>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="comment-card d-flex align-items-center">
+                  <img
+                    src="./img/profile-1.webp"
+                    alt="person-profile"
+                    class="profile-img" />
+                  <div class="mx-3">
+                    <h6 class="text-white">Sardor Rahmonov</h6>
+                    <p class="text-secondary">Mijoz</p>
+                    <i class="fw-bold text-success"
+                      >Platforma orqali uyimga professional quruvchilarni
+                      topdim.Tavsiya qilaman</i
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="comment-card d-flex align-items-center">
+                  <img
+                    src="./img/profile-2.jpg"
+                    alt="person-profile"
+                    class="profile-img" />
+                  <div class="mx-3">
+                    <h6 class="text-white">Azizbek Karimov</h6>
+                    <p class="text-secondary">Soha eksperti</p>
+                    <i class="fw-bold text-success"
+                      >Bu sayt orqali uyimga yaxshi santexnik topdim. Endi
+                      boshqa ustalarni topish ham ancha oson bo‘ldi.</i
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="comment-card d-flex align-items-center">
+                  <img
+                    style="width: 100px"
+                    src="./img/profile-3.jpg"
+                    alt="person-profile"
+                    class="profile-img" />
+                  <div class="mx-3">
+                    <h6 class="text-white">Diyorbek Rasulov</h6>
+                    <p class="text-secondary">CEO of startap.uz</p>
+                    <i class="fw-bold text-success"
+                      >Juda qulay platforma ekan, kerakli ustani bir necha
+                      daqiqada topdim. Oldin tanishlar orqali qidirishga to‘g‘ri
+                      kelardi.</i
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="comment-card d-flex align-items-center">
+                  <img
+                    src="./img/profile-4.jpg"
+                    alt="person-profile"
+                    class="profile-img" />
+                  <div class="mx-3">
+                    <h6 class="text-white">herzod Tursunov</h6>
+                    <p class="text-secondary">Arxitektor</p>
+                    <i class="fw-bold text-success"
+                      >Sayt juda tushunarli va ishlatish oson. Buyurtma topishim
+                      kerak edi, shu sayt orqali tez topdim.</i
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="comment-card d-flex align-items-center">
+                  <img
+                    src="./img/profile-5.jpg"
+                    alt="person-profile"
+                    class="profile-img" />
+                  <div class="mx-3">
+                    <h6 class="text-white">Bekzod Abdullayev</h6>
+                    <p class="text-secondary">Foydalanuvchi</p>
+                    <i class="fw-bold text-success"
+                      >Juda foydali loyiha ekan, turli kasbdagi ustalarni bir
+                      joyda ko‘rish mumkin. Endi har safar alohida qidirishga
+                      hojat yo‘q.</i
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="comment-card d-flex align-items-center">
+                  <img
+                    style="width: 100px"
+                    src="./img//profile-6.jpeg"
+                    alt="person-profile"
+                    class="profile-img" />
+                  <div class="mx-3">
+                    <h6 class="text-white">Javohir Ismoilov</h6>
+                    <p class="text-secondary">Usta</p>
+                    <i class="fw-bold text-success"
+                      >Usta sifatida mijozni tez topdim. Sayt ham tez ishlaydi
+                      va foydalanish juda qulay.</i
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 mt-5">
+                <p class="mt-5 text-center fs-3 comment-footer">
+                  Bu fikrlar sizning bizning platdformamizni tanlashga yordam
+                  beradi degan umiddamiz
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+      <div class="container-fluid p-0">
+        <footer class="p-5">
+          <h5 class="text-center fw-bold text-secondary fs-3 mb-5">
+            Platformamizga tashrif buyurganingiz uchun tashakkur!.
+          </h5>
+          <div class="row mx-0">
+            <div class="col-12 col-md-3 text-secondary">
+              <h3 class="text-success">Ustalar Platformasi</h3>
+              <img
+                src="./icons/logo.png"
+                alt="s"
+                style="width: 300px"
+                class="rounded" />
+            </div>
+            <div class="col-12 col-md-3">
+              <h5 class="px-5 text-success">Sayt xaritasi</h5>
+              <div
+                class="d-flex flex-column gap-3 gap-md-1 px-5 links text-uppercase">
+                <a href="#main">Asosiy</a>
+                <a href="#ustalar">Ustalar</a>
+                <a href="#elon">E'lon </a>
+                <a href="#feedback">maslahat olish </a>
+                <a href="#comment">Fikrlar </a>
+                <a href="#">info</a>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="d-flex flex-column gap-1 px-5 links">
+                <h4 class="text-success">Ijtimoiy tarmoqlar</h4>
+                <a href="#"
+                  ><i class="bi bi-wikipedia text-primary"></i> Vikipediya</a
+                >
+                <a href="#"
+                  ><i class="bi bi-telegram text-primary"></i> Telegram</a
+                >
+                <a href="#"
+                  ><i class="bi bi-instagram text-danger"></i> Instagram
+                </a>
+                <a href="#"
+                  ><i class="bi bi-linkedin" style="color: blue"></i>
+                  Linkedin</a
+                >
+                <a href="#"
+                  ><i class="bi bi-youtube text-danger"></i> YouTube
+                </a>
+                <a href="#"
+                  ><i class="bi bi-facebook text-primary"></i> FaceBook</a
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-secondary">
+              <div class="d-flex flex-column gap-1 px-5 links">
+                <h5 class="text-success">
+                  <i class="bi bi-headset text-primary"></i> Bog'lanish
+                </h5>
+                <h4>
+                  <i class="bi bi-telephone-outbound-fill text-primary"></i>
+                  Telefon:
+                </h4>
+                <h5>+998 71 402 32 00</h5>
+                <h5>+998 61 500 32 00</h5>
+                <h4>
+                  <i class="bi bi-envelope-at-fill text-primary"></i> Email
+                </h4>
+                <a
+                  href="mailto:ahmedovnurbek26042005@gmail.com"
+                  class="text-primary"
+                  >ustalarplatform@gmail.com</a
+                >
+              </div>
+            </div>
+          </div>
+          <p class="text-center fs-4 text-secondary mt-4">
+            &copy;2026 <span class="text-primary">Ustalar Platforma</span>.
+            Barcha huquqlar himoyalangan!.
+          </p>
+        </footer>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"></script>
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>
