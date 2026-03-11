@@ -101,12 +101,23 @@ nav {
   border-color: #4f46e5;
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
-.ai-btn {
+.ai-btn,
+.lang-btn {
   padding: 8px;
   border: 1px solid rgb(32, 32, 62);
   border-radius: 8px;
   color: blue;
   font-weight: 500;
+  border: none;
+  text-decoration: none;
+  background-color: #fff;
+  transition: all 0.4s ease;
+}
+.ai-btn:hover,
+.lang-btn:hover {
+  background-color: #020b58;
+  color: white;
+  border-color: #020b58;
 }
 .ai-logo {
   height: 20px;
