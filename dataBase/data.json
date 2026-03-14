@@ -1,0 +1,62 @@
+[
+  {
+    "ism_familya_yoki_shirkat": "Azamat Matkarimov",
+    "mutaxasislik": "Santexnik",
+    "shahar": "Nukus",
+    "telefon": "+998901234501"
+  },
+  {
+    "ism_familya_yoki_shirkat": "Rustam Qurbanov",
+    "mutaxasislik": "Elektrik",
+    "shahar": "Nukus",
+    "telefon": "+998901234502"
+  },
+  {
+    "ism_familya_yoki_shirkat": "Bekzod Qurilish Servis",
+    "mutaxasislik": "Qurilish ustasi",
+    "shahar": "Nukus",
+    "telefon": "+998901234503"
+  },
+  {
+    "ism_familya_yoki_shirkat": "Sardor Tile Master",
+    "mutaxasislik": "Kafel terish ustasi",
+    "shahar": "Nukus",
+    "telefon": "+998901234504"
+  },
+  {
+    "ism_familya_yoki_shirkat": "Nukus Remont Servis",
+    "mutaxasislik": "Uy remonti",
+    "shahar": "Nukus",
+    "telefon": "+998901234505"
+  },
+  {
+    "ism_familya_yoki_shirkat": "Diyorbek Karimov",
+    "mutaxasislik": "Konditsioner ustasi",
+    "shahar": "Nukus",
+    "telefon": "+998901234506"
+  },
+  {
+    "ism_familya_yoki_shirkat": "Jasur Mebel Ustasi",
+    "mutaxasislik": "Mebel yig‘ish va ta’mirlash",
+    "shahar": "Nukus",
+    "telefon": "+998901234507"
+  },
+  {
+    "ism_familya_yoki_shirkat": "Kamol Tom Ustasi",
+    "mutaxasislik": "Tom yopish",
+    "shahar": "Nukus",
+    "telefon": "+998901234508"
+  },
+  {
+    "ism_familya_yoki_shirkat": "Islombek Usta",
+    "mutaxasislik": "Deraza va eshik o‘rnatish",
+    "shahar": "Nukus",
+    "telefon": "+998901234509"
+  },
+  {
+    "ism_familya_yoki_shirkat": "Nukus Elektro Servis",
+    "mutaxasislik": "Elektr montaj",
+    "shahar": "Nukus",
+    "telefon": "+998901234510"
+  }
+]

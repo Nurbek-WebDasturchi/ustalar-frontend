@@ -66,7 +66,7 @@
                     class="search-input"
                     placeholder="Usta izlash"
                     aria-label="Recipient’s username" />
-                  <button class="search-btn">Qidirish</button>
+                  <button class="search-btn" type="button">Qidirish</button>
                 </div>
                 <div class="d-inline-block">
                   <select
@@ -584,11 +584,14 @@
       </div>
     </div>
     <!-- Modal -->
-    <div class="custom-modal" tabindex="-1">
+    <div class="custom-modal hide" tabindex="-1">
       <div class="custom-dialog">
         <div class="modal-content">
           <div class="container">
             <div class="row">
+              <div class="col-12 d-flex justify-content-end">
+                <button class="close-modal">close</button>
+              </div>
               <div class="col-12">
                 <div class="text-success fs-3">Natijalar</div>
                 <br />
@@ -604,5 +607,6 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"></script>
     <script src="./js/scripts.js"></script>
+    <script src="./js/search.js"></script>
   </body>
 </html>
