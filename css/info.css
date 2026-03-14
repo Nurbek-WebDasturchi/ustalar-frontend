@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.b {
+  border: 2px solid red;
+}
+body {
+  background-color: rgba(0, 0, 50);
+}
+.info-row {
+  background-color: #0e0b0b;
+  border-radius: 20px;
+}
+.platform-img {
+  width: 500px;
+  height: auto;
+  border-radius: 20px;
+}
+.quote-text {
+  font-style: italic;
+}
+.quote-author {
+  font-family: "Courier New", Courier, monospace;
+}
+/* techs */
+.html {
+  color: #f37a4d;
+}
+.css {
+  color: #2d53e4;
+}
+.bootstrap-name {
+  color: #7c11f9;
+}
+.tech-img {
+  width: auto;
+  height: 300px;
+  border-radius: 20px;
+}
