@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ustalar</title>
     <link rel="icon" href="./icons/Square-Logos-11.webp" />
+    <!-- Bootstrap Library -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous" />
+    <!-- CSS Style -->
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/search.css" />
   </head>
   <body class="p-0 mt-0">
     <div class="main-section">
@@ -578,6 +581,22 @@
             Barcha huquqlar himoyalangan!.
           </p>
         </footer>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="custom-modal" tabindex="-1">
+      <div class="custom-dialog">
+        <div class="modal-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="text-success fs-3">Natijalar</div>
+                <br />
+                <div class="results"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script

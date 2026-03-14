@@ -2,6 +2,12 @@ const form = document.querySelector("form");
 const input = document.querySelector(".typer");
 const chat = document.querySelector(".chat");
 
+// uxlab qomasilik uchun
+
+setInterval(() => {
+  fetch("https://ustalar-platformasi-api.onrender.com/ping");
+}, 300000);
+// /uxlab qolmasik uchun.
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
