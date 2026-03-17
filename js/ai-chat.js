@@ -1,5 +1,8 @@
 const form = document.querySelector("form");
 const input = document.querySelector(".typer");
+window.addEventListener("DOMContentLoaded", () => {
+  input.focus();
+});
 const chat = document.querySelector(".chat");
 const noMessage = document.querySelector(".no-message");
 // uxlab qomasilik uchun

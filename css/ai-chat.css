@@ -15,18 +15,61 @@
   border-radius: 20px;
   background-color: rgb(9, 93, 250);
 }
+/* mobile */
+.back {
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+  position: absolute;
+  left: 10px;
+  width: 150px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.galochka {
+  color: rgb(3, 240, 3);
+  font-weight: 900;
+}
+/* /mobile */
 .profile-img {
   height: 100px;
   width: auto;
   border-radius: 50%;
+  background-color: #000;
 }
 .profile-info {
   height: 50%;
 }
+.ai-name {
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .back {
+    text-decoration: none;
+    color: black;
+    font-size: 3rem;
+    position: absolute;
+    left: 140px;
+    width: 150px;
+    cursor: pointer;
+  }
+  .back:hover {
+    color: rgb(247, 0, 0);
+  }
+  .galochka {
+    color: rgb(3, 240, 3);
+    font-weight: 900;
+  }
+  .ai-name {
+    font-size: 2rem;
+  }
+}
 /* chat room */
 .chat-room {
-  min-height: 62%;
-  max-height: 70%;
+  min-height: 56vh;
+  height: auto;
+  max-height: 100vh;
   border: 2px solid rgb(9, 93, 250);
   border-radius: 20px;
   margin-top: 10px;
@@ -34,6 +77,13 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.no-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 50vh;
 }
 .chat {
   display: flex;
