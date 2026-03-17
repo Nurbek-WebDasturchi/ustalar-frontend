@@ -1,7 +1,7 @@
 const form = document.querySelector("form");
 const input = document.querySelector(".typer");
 const chat = document.querySelector(".chat");
-
+const noMessage = document.querySelector(".no-message");
 // uxlab qomasilik uchun
 
 setInterval(() => {
@@ -13,6 +13,8 @@ form.addEventListener("submit", async (e) => {
 
   const message = input.value.trim();
   if (!message) return;
+
+  noMessage.classList.add("hide");
 
   // USER MESSAGE
   const askPocket = document.createElement("div");
@@ -27,6 +29,15 @@ form.addEventListener("submit", async (e) => {
 
   input.value = "";
 
+  // LOADING
+  const loading = document.createElement("div");
+  loading.className = "response";
+  loading.innerHTML = `<p>Yozmoqda...</p><div class="loader"></div> `;
+
+  chat.appendChild(loading);
+
+  chat.scrollTop = chat.scrollHeight;
+
   try {
     const res = await fetch(
       "https://ustalar-platformasi-api.onrender.com/chat",
@@ -35,24 +46,32 @@ form.addEventListener("submit", async (e) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          message: message,
-        }),
+        body: JSON.stringify({ message }),
       },
     );
 
-    const data = await res.json();
+    let data;
+    try {
+      data = await res.json();
+    } catch {
+      data = {};
+    }
 
-    console.log("Server response:", data);
+    chat.removeChild(loading);
 
-    // AI MESSAGE
     const resPocket = document.createElement("div");
     resPocket.className = "response-pocket";
 
     const resValue = document.createElement("div");
     resValue.className = "response";
 
-    resValue.innerText = data.reply || "AI javob bera olmadi";
+    if (res.status === 429) {
+      resValue.innerText = "Limit tugadi, keyinroq urinib ko‘ring";
+    } else if (!res.ok) {
+      resValue.innerText = "Serverda xatolik";
+    } else {
+      resValue.innerText = data.reply || "AI javob bera olmadi";
+    }
 
     resPocket.appendChild(resValue);
     chat.appendChild(resPocket);
@@ -60,6 +79,8 @@ form.addEventListener("submit", async (e) => {
     chat.scrollTop = chat.scrollHeight;
   } catch (error) {
     console.error("Fetch error:", error);
+
+    chat.removeChild(loading);
 
     const errorMsg = document.createElement("div");
     errorMsg.className = "response";

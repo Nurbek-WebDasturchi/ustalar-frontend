@@ -153,15 +153,27 @@ h1 {
 .card {
   margin-top: 20px;
   background-color: #020b58;
+  position: relative;
+  border-radius: 20px;
 }
 .card img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: inherit;
+  border-radius: 10px 10px 0 0;
 }
 .card-body {
   padding: 10px;
   color: #fff;
+}
+.badge-mine {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background-color: #041bed;
+  color: #ddd;
+  padding: 10px;
+  border-radius: 10px;
 }
 /* E'LON BERISH */
 #elon,
