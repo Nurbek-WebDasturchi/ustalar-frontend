@@ -51,25 +51,68 @@ nav {
   width: auto;
   border-radius: 15px 0 0 15px;
 }
-.links a {
+/* menu */
+.close-btn {
+  color: #0f0f13;
+}
+.links {
+  width: 100%;
+  padding: 10px;
+}
+.link {
+  display: inline-block;
   text-decoration: none;
   color: rgb(245, 245, 249);
+  background-color: rgb(32, 32, 62);
+  width: 100% !important;
   font-size: 16px;
   font-weight: 600;
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 10px;
 }
-.links a:hover {
-  color: rgb(133, 133, 221);
+.lang-bar {
+  border: 2px solid red;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+}
+.search-bar {
+  width: 100%;
 }
 .search-input {
   border: none;
   background-color: rgb(32, 32, 62);
   border-radius: 10px 0 0 10px;
-  width: 90%;
+  width: 60%;
   padding: 8px;
   color: aliceblue;
 }
 .search-input::placeholder {
   color: aliceblue;
+}
+/* desktop */
+@media (min-width: 768px) {
+  .links a {
+    text-decoration: none;
+    color: rgb(245, 245, 249);
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .links a:hover {
+    color: rgb(133, 133, 221);
+  }
+  .search-bar {
+    width: 70%;
+  }
+  .search-input {
+    width: 90%;
+  }
+  .lang-btn,
+  .ai-btn {
+    cursor: pointer;
+  }
 }
 .search-btn {
   background-color: rgb(23, 23, 245);
