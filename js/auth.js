@@ -5,7 +5,7 @@
 //  <script src="/js/auth.js"></script>
 // ═══════════════════════════════════════════════════════
 
-const API_BASE = "http://localhost:3001/api";
+const API_BASE = "https://ustalar-frontend.onrender.com/api";
 
 function getToken() {
   return localStorage.getItem("token");
@@ -22,7 +22,7 @@ function renderAuthButtons() {
   const user = getUser();
 
   // Desktop: second bar ichidagi div (AI va Lang tugmalari yoniga)
-  const secondBarRight = document.querySelector(".authentication");
+  const secondBarRight = document.querySelector(".d-none.d-md-inline-block");
   if (secondBarRight) {
     const authWrap = document.createElement("span");
     authWrap.id = "authBtnsDesktop";
