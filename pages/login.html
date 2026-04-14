@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kirish | Ustalar Platformasi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600&display=swap"
+      rel="stylesheet" />
+    <style>
+      :root {
+        --primary: #00c896;
+        --primary-dark: #00a37a;
+        --bg: #0a0f1a;
+        --card-bg: #111827;
+        --border: #1e2d3d;
+        --text: #e2e8f0;
+        --muted: #64748b;
+        --danger: #ff4757;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Manrope", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: -30%;
+        left: -20%;
+        width: 70%;
+        height: 70%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 200, 150, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        bottom: -20%;
+        right: -10%;
+        width: 50%;
+        height: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 200, 150, 0.05) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .page-wrapper {
+        width: 100%;
+        max-width: 460px;
+        padding: 20px;
+        z-index: 1;
+      }
+
+      .brand {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .brand h1 {
+        font-family: "Unbounded", sans-serif;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: var(--primary);
+        letter-spacing: -1px;
+      }
+
+      .brand p {
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin-top: 4px;
+      }
+
+      .card-box {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 36px 32px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .tab-switcher {
+        display: flex;
+        background: var(--bg);
+        border-radius: 12px;
+        padding: 4px;
+        margin-bottom: 28px;
+        border: 1px solid var(--border);
+      }
+
+      .tab-btn {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        border-radius: 9px;
+        font-family: "Manrope", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+
+      .tab-btn.active {
+        background: var(--primary);
+        color: #000;
+      }
+
+      .form-section {
+        display: none;
+      }
+      .form-section.active {
+        display: block;
+      }
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      label {
+        display: block;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 7px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      input {
+        width: 100%;
+        padding: 13px 16px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--text);
+        font-family: "Manrope", sans-serif;
+        font-size: 0.95rem;
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+
+      input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(0, 200, 150, 0.12);
+      }
+
+      input::placeholder {
+        color: var(--muted);
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 14px;
+        background: var(--primary);
+        color: #000;
+        border: none;
+        border-radius: 12px;
+        font-family: "Unbounded", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: all 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .submit-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 25px rgba(0, 200, 150, 0.3);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .alert-box {
+        padding: 12px 16px;
+        border-radius: 10px;
+        font-size: 0.88rem;
+        margin-bottom: 18px;
+        display: none;
+        font-weight: 500;
+      }
+
+      .alert-box.error {
+        background: rgba(255, 71, 87, 0.12);
+        border: 1px solid rgba(255, 71, 87, 0.3);
+        color: #ff6b7a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .alert-box.success {
+        background: rgba(0, 200, 150, 0.12);
+        border: 1px solid rgba(0, 200, 150, 0.3);
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .back-link {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .back-link a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .back-link a:hover {
+        text-decoration: underline;
+      }
+
+      .spinner {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(0, 0, 0, 0.3);
+        border-top-color: #000;
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .card-box {
+        animation: fadeIn 0.4s ease;
+      }
+
+      .grid-bg {
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0, 200, 150, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 200, 150, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-bg"></div>
+
+    <div class="page-wrapper">
+      <div class="brand">
+        <h1>Ustalar.uz</h1>
+        <p>Qurilish mutaxassislari platformasi</p>
+      </div>
+
+      <div class="card-box">
+        <div class="tab-switcher">
+          <button class="tab-btn active" onclick="switchTab('login')">
+            <i class="bi bi-box-arrow-in-right"></i> Kirish
+          </button>
+          <button class="tab-btn" onclick="switchTab('register')">
+            <i class="bi bi-person-plus"></i> Ro'yxatdan o'tish
+          </button>
+        </div>
+
+        <!-- LOGIN -->
+        <div class="form-section active" id="loginForm">
+          <div class="alert-box" id="loginAlert"></div>
+          <div class="form-group">
+            <label>Telefon raqam</label>
+            <input
+              type="text"
+              id="loginPhone"
+              placeholder="+998 90 123 45 67" />
+          </div>
+          <div class="form-group">
+            <label>Parol</label>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Parolingizni kiriting" />
+          </div>
+          <button class="submit-btn" onclick="handleLogin()">Kirish</button>
+        </div>
+
+        <!-- REGISTER -->
+        <div class="form-section" id="registerForm">
+          <div class="alert-box" id="registerAlert"></div>
+          <div class="form-group">
+            <label>Ism familyangiz</label>
+            <input
+              type="text"
+              id="regName"
+              placeholder="Masalan: Sardor Rahmonov" />
+          </div>
+          <div class="form-group">
+            <label>Telefon raqam</label>
+            <input type="text" id="regPhone" placeholder="+998 90 123 45 67" />
+          </div>
+          <div class="form-group">
+            <label>Parol</label>
+            <input
+              type="password"
+              id="regPassword"
+              placeholder="Kamida 6 ta belgi" />
+          </div>
+          <div class="form-group">
+            <label>Parolni tasdiqlang</label>
+            <input
+              type="password"
+              id="regConfirm"
+              placeholder="Parolni takrorlang" />
+          </div>
+          <button class="submit-btn" onclick="handleRegister()">
+            Ro'yxatdan o'tish
+          </button>
+        </div>
+      </div>
+
+      <div class="back-link">
+        <a href="../index.html"
+          ><i class="bi bi-arrow-left"></i> Bosh sahifaga qaytish</a
+        >
+      </div>
+    </div>
+
+    <script>
+      const API = "http://localhost:3001/api";
+
+      function switchTab(tab) {
+        document.querySelectorAll(".tab-btn").forEach((b, i) => {
+          b.classList.toggle("active", (i === 0) === (tab === "login"));
+        });
+        document
+          .getElementById("loginForm")
+          .classList.toggle("active", tab === "login");
+        document
+          .getElementById("registerForm")
+          .classList.toggle("active", tab === "register");
+      }
+
+      function showAlert(id, msg, type) {
+        const el = document.getElementById(id);
+        el.className = `alert-box ${type}`;
+        el.innerHTML = `<i class="bi bi-${type === "error" ? "exclamation-circle" : "check-circle"}"></i> ${msg}`;
+      }
+
+      async function handleLogin() {
+        const phone = document.getElementById("loginPhone").value.trim();
+        const password = document.getElementById("loginPassword").value;
+        const btn = event.target;
+
+        if (!phone || !password)
+          return showAlert(
+            "loginAlert",
+            "Barcha maydonlarni to'ldiring",
+            "error",
+          );
+
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span>Kirmoqda...';
+
+        try {
+          const res = await fetch(`${API}/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ phone, password }),
+          });
+          const data = await res.json();
+
+          if (!res.ok) return showAlert("loginAlert", data.error, "error");
+
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+
+          showAlert(
+            "loginAlert",
+            "Muvaffaqiyatli kirildingiz! Yo'naltirilmoqda...",
+            "success",
+          );
+
+          setTimeout(() => {
+            window.location.href =
+              data.user.role === "admin" ? "admin.html" : "../index.html";
+          }, 1000);
+        } catch {
+          showAlert("loginAlert", "Server bilan bog'lanib bo'lmadi", "error");
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = "Kirish";
+        }
+      }
+
+      async function handleRegister() {
+        const fullname = document.getElementById("regName").value.trim();
+        const phone = document.getElementById("regPhone").value.trim();
+        const password = document.getElementById("regPassword").value;
+        const confirm = document.getElementById("regConfirm").value;
+        const btn = event.target;
+
+        if (!fullname || !phone || !password)
+          return showAlert(
+            "registerAlert",
+            "Barcha maydonlarni to'ldiring",
+            "error",
+          );
+        if (password.length < 6)
+          return showAlert(
+            "registerAlert",
+            "Parol kamida 6 ta belgidan iborat bo'lsin",
+            "error",
+          );
+        if (password !== confirm)
+          return showAlert("registerAlert", "Parollar mos kelmadi", "error");
+
+        btn.disabled = true;
+        btn.innerHTML =
+          "<span class=\"spinner\"></span>Ro'yxatdan o'tilmoqda...";
+
+        try {
+          const res = await fetch(`${API}/register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ fullname, phone, password }),
+          });
+          const data = await res.json();
+
+          if (!res.ok) return showAlert("registerAlert", data.error, "error");
+
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+
+          showAlert(
+            "registerAlert",
+            "Muvaffaqiyatli ro'yxatdan o'tdingiz!",
+            "success",
+          );
+          setTimeout(() => (window.location.href = "../index.html"), 1000);
+        } catch {
+          showAlert(
+            "registerAlert",
+            "Server bilan bog'lanib bo'lmadi",
+            "error",
+          );
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = "Ro'yxatdan o'tish";
+        }
+      }
+
+      // Enter key support
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          if (document.getElementById("loginForm").classList.contains("active"))
+            handleLogin();
+          else handleRegister();
+        }
+      });
+
+      // URL param: ?tab=register -> register tabni ochish
+      const urlTab = new URLSearchParams(window.location.search).get("tab");
+      if (urlTab === "register") switchTab("register");
+
+      // If already logged in
+      if (localStorage.getItem("token")) {
+        const user = JSON.parse(localStorage.getItem("user") || "{}");
+        window.location.href =
+          user.role === "admin" ? "admin.html" : "../index.html";
+      }
+    </script>
+  </body>
+</html>

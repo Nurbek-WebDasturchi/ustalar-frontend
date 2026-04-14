@@ -78,9 +78,6 @@ nav {
   justify-content: end;
   padding: 10px;
 }
-.search-bar {
-  width: 100%;
-}
 .search-input {
   border: none;
   background-color: rgb(32, 32, 62);
@@ -112,6 +109,9 @@ nav {
   .lang-btn,
   .ai-btn {
     cursor: pointer;
+  }
+  .search-bar {
+    width: 60% !important;
   }
 }
 .search-btn {
