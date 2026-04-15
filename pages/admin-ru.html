@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Админ Панель | Платформа мастеров</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #00c896; --primary-dark: #00a37a;
+      --bg: #080d16; --sidebar-bg: #0d1420;
+      --card-bg: #111827; --border: #1e2d3d;
+      --text: #e2e8f0; --muted: #64748b;
+      --danger: #ff4757; --warning: #ffa502; --info: #3b82f6;
+      --sidebar-w: 260px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; }
+    .sidebar {
+      width: var(--sidebar-w); background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      position: fixed; top: 0; left: 0; height: 100vh; z-index: 100; transition: transform 0.3s;
+    }
+    .sidebar-logo { padding: 24px 20px; border-bottom: 1px solid var(--border); }
+    .sidebar-logo h2 { font-family: 'Unbounded', sans-serif; font-size: 1.1rem; font-weight: 900; color: var(--primary); }
+    .sidebar-logo span { font-size: 0.72rem; color: var(--muted); display: block; margin-top: 2px; }
+    .nav-menu { flex: 1; padding: 16px 12px; overflow-y: auto; }
+    .nav-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 14px; border-radius: 10px; cursor: pointer;
+      transition: all 0.2s; margin-bottom: 4px;
+      color: var(--muted); font-size: 0.9rem; font-weight: 500;
+      border: 1px solid transparent;
+    }
+    .nav-item:hover { background: rgba(0,200,150,0.06); color: var(--text); }
+    .nav-item.active { background: rgba(0,200,150,0.12); color: var(--primary); border-color: rgba(0,200,150,0.2); }
+    .nav-item i { font-size: 1.1rem; width: 20px; text-align: center; }
+    .badge-count { margin-left: auto; background: var(--danger); color: #fff; border-radius: 20px; padding: 2px 8px; font-size: 0.72rem; font-weight: 700; }
+    .sidebar-footer { padding: 16px 12px; border-top: 1px solid var(--border); }
+    .admin-info { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: rgba(0,200,150,0.06); border-radius: 10px; margin-bottom: 10px; }
+    .admin-avatar { width: 36px; height: 36px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #000; font-size: 0.85rem; }
+    .admin-name { font-size: 0.85rem; font-weight: 600; }
+    .admin-role { font-size: 0.72rem; color: var(--muted); }
+    .logout-btn { width: 100%; padding: 10px; background: rgba(255,71,87,0.1); border: 1px solid rgba(255,71,87,0.25); color: var(--danger); border-radius: 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'Manrope', sans-serif; }
+    .logout-btn:hover { background: rgba(255,71,87,0.2); }
+    .lang-switch-btn { width: 100%; padding: 8px; background: rgba(0,200,150,0.06); border: 1px solid rgba(0,200,150,0.15); color: var(--muted); border-radius: 10px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; font-family: 'Manrope', sans-serif; margin-bottom: 8px; text-decoration: none; display: block; text-align: center; }
+    .lang-switch-btn:hover { color: var(--primary); }
+    .main-content { margin-left: var(--sidebar-w); flex: 1; padding: 28px; overflow-y: auto; }
+    .page-header { margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; }
+    .page-title { font-family: 'Unbounded', sans-serif; font-size: 1.4rem; font-weight: 700; }
+    .page-subtitle { color: var(--muted); font-size: 0.85rem; margin-top: 3px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .stat-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 22px; position: relative; overflow: hidden; }
+    .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+    .stat-card.green::before { background: var(--primary); }
+    .stat-card.blue::before { background: var(--info); }
+    .stat-card.orange::before { background: var(--warning); }
+    .stat-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .stat-card.green .stat-icon { color: var(--primary); }
+    .stat-card.blue .stat-icon { color: var(--info); }
+    .stat-card.orange .stat-icon { color: var(--warning); }
+    .stat-value { font-family: 'Unbounded', sans-serif; font-size: 2rem; font-weight: 900; }
+    .stat-label { color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
+    .table-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 24px; }
+    .table-card-header { padding: 18px 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .table-card-title { font-family: 'Unbounded', sans-serif; font-size: 0.9rem; font-weight: 700; }
+    .section-tab { display: none; }
+    .section-tab.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    table { width: 100%; border-collapse: collapse; }
+    th { padding: 12px 16px; text-align: left; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+    td { padding: 14px 16px; font-size: 0.88rem; border-bottom: 1px solid rgba(30,45,61,0.6); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .badge-status { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+    .badge-status.pending { background: rgba(255,165,2,0.15); color: var(--warning); }
+    .badge-status.approved { background: rgba(0,200,150,0.15); color: var(--primary); }
+    .badge-status.user { background: rgba(59,130,246,0.15); color: var(--info); }
+    .badge-status.admin { background: rgba(0,200,150,0.15); color: var(--primary); }
+    .action-btn { padding: 6px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; font-family: 'Manrope', sans-serif; }
+    .btn-approve { background: rgba(0,200,150,0.15); color: var(--primary); }
+    .btn-approve:hover { background: rgba(0,200,150,0.25); }
+    .btn-reject { background: rgba(255,71,87,0.15); color: var(--danger); }
+    .btn-reject:hover { background: rgba(255,71,87,0.25); }
+    .btn-delete { background: rgba(255,71,87,0.1); color: var(--danger); border: 1px solid rgba(255,71,87,0.25); }
+    .btn-delete:hover { background: rgba(255,71,87,0.2); }
+    .empty-state { text-align: center; padding: 48px; color: var(--muted); }
+    .empty-state i { font-size: 3rem; margin-bottom: 12px; display: block; }
+    .avatar-placeholder { width: 36px; height: 36px; border-radius: 50%; background: rgba(0,200,150,0.15); color: var(--primary); display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; }
+    .refresh-btn { background: rgba(0,200,150,0.1); border: 1px solid rgba(0,200,150,0.2); color: var(--primary); padding: 7px 14px; border-radius: 8px; font-size: 0.8rem; cursor: pointer; font-family: 'Manrope', sans-serif; font-weight: 600; transition: all 0.2s; }
+    .refresh-btn:hover { background: rgba(0,200,150,0.2); }
+    .toast { position: fixed; top: 20px; right: 20px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; font-size: 0.88rem; font-weight: 500; z-index: 9999; transform: translateX(120%); transition: transform 0.3s ease; max-width: 300px; }
+    .toast.show { transform: translateX(0); }
+    .toast.success { border-color: rgba(0,200,150,0.4); color: var(--primary); }
+    .toast.error { border-color: rgba(255,71,87,0.4); color: var(--danger); }
+    @media (max-width: 768px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .main-content { margin-left: 0; padding: 16px; }
+      .mobile-toggle { display: flex !important; position: fixed; top: 16px; left: 16px; z-index: 200; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; cursor: pointer; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text); }
+    }
+    .mobile-toggle { display: none; }
+  </style>
+</head>
+<body>
+  <div class="toast" id="toast"></div>
+  <button class="mobile-toggle" onclick="toggleSidebar()"><i class="bi bi-list"></i> Меню</button>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <h2>Ustalar.uz</h2>
+      <span>Панель администратора</span>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-item active" onclick="showSection('dashboard')">
+        <i class="bi bi-speedometer2"></i> Главная
+      </div>
+      <div class="nav-item" onclick="showSection('pending')">
+        <i class="bi bi-hourglass-split"></i> Ожидающие объявления
+        <span class="badge-count" id="pendingBadge">0</span>
+      </div>
+      <div class="nav-item" onclick="showSection('ustalar')">
+        <i class="bi bi-people-fill"></i> Мастера
+      </div>
+      <div class="nav-item" onclick="showSection('users')">
+        <i class="bi bi-person-badge"></i> Пользователи
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="admin-info">
+        <div class="admin-avatar" id="adminInitial">A</div>
+        <div>
+          <div class="admin-name" id="adminName">Admin</div>
+          <div class="admin-role">Супер Админ</div>
+        </div>
+      </div>
+      <a href="admin.html" class="lang-switch-btn"><i class="bi bi-translate"></i> O'zbekcha</a>
+      <button class="logout-btn" onclick="logout()"><i class="bi bi-box-arrow-left"></i> Выйти</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <!-- Dashboard -->
+    <div class="section-tab active" id="dashboardSection">
+      <div class="page-header">
+        <div>
+          <div class="page-title">Главная панель</div>
+          <div class="page-subtitle">Общий обзор платформы</div>
+        </div>
+        <button class="refresh-btn" onclick="loadAll()"><i class="bi bi-arrow-clockwise"></i> Обновить</button>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card blue">
+          <div class="stat-icon"><i class="bi bi-people"></i></div>
+          <div class="stat-value" id="statUsers">—</div>
+          <div class="stat-label">Всего пользователей</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon"><i class="bi bi-person-check"></i></div>
+          <div class="stat-value" id="statUstalar">—</div>
+          <div class="stat-label">Подтверждённые мастера</div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-icon"><i class="bi bi-hourglass"></i></div>
+          <div class="stat-value" id="statPending">—</div>
+          <div class="stat-label">Ожидающие объявления</div>
+        </div>
+      </div>
+      <div class="table-card">
+        <div class="table-card-header">
+          <div class="table-card-title">Последние объявления (ожидающие)</div>
+          <button class="refresh-btn" onclick="showSection('pending')">Смотреть все →</button>
+        </div>
+        <div id="dashPendingList"></div>
+      </div>
+    </div>
+
+    <!-- Pending -->
+    <div class="section-tab" id="pendingSection">
+      <div class="page-header">
+        <div>
+          <div class="page-title">Ожидающие объявления</div>
+          <div class="page-subtitle">Подтвердить или отклонить</div>
+        </div>
+        <button class="refresh-btn" onclick="loadPending()"><i class="bi bi-arrow-clockwise"></i> Обновить</button>
+      </div>
+      <div class="table-card"><div id="pendingList"></div></div>
+    </div>
+
+    <!-- Ustalar -->
+    <div class="section-tab" id="ustalarSection">
+      <div class="page-header">
+        <div>
+          <div class="page-title">Мастера</div>
+          <div class="page-subtitle">Список подтверждённых мастеров</div>
+        </div>
+        <button class="refresh-btn" onclick="loadUstalar()"><i class="bi bi-arrow-clockwise"></i> Обновить</button>
+      </div>
+      <div class="table-card"><div id="ustalarList"></div></div>
+    </div>
+
+    <!-- Users -->
+    <div class="section-tab" id="usersSection">
+      <div class="page-header">
+        <div>
+          <div class="page-title">Пользователи</div>
+          <div class="page-subtitle">Все зарегистрированные пользователи</div>
+        </div>
+        <button class="refresh-btn" onclick="loadUsers()"><i class="bi bi-arrow-clockwise"></i> Обновить</button>
+      </div>
+      <div class="table-card"><div id="usersList"></div></div>
+    </div>
+  </main>
+
+  <script>
+    const API = 'http://localhost:3001/api';
+    let token = localStorage.getItem('token');
+    let currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+
+    if (!token || currentUser.role !== 'admin') window.location.href = 'login-ru.html';
+
+    document.getElementById('adminName').textContent = currentUser.fullname || 'Admin';
+    document.getElementById('adminInitial').textContent = (currentUser.fullname || 'A')[0].toUpperCase();
+
+    function headers() { return { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }; }
+
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('toast');
+      t.textContent = (type === 'success' ? '✅ ' : '❌ ') + msg;
+      t.className = `toast ${type} show`;
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    function showSection(name) {
+      document.querySelectorAll('.section-tab').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      document.getElementById(name + 'Section').classList.add('active');
+      event?.target?.closest('.nav-item')?.classList.add('active');
+      if (name === 'dashboard') loadAll();
+      if (name === 'pending') loadPending();
+      if (name === 'ustalar') loadUstalar();
+      if (name === 'users') loadUsers();
+      if (window.innerWidth < 768) document.getElementById('sidebar').classList.remove('open');
+    }
+
+    function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+
+    function logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = 'login-ru.html';
+    }
+
+    function avatarEl(user) {
+      if (user.avatar) return `<img src="${user.avatar}" style="width:36px;height:36px;border-radius:50%;object-fit:cover" />`;
+      return `<div class="avatar-placeholder">${(user.fullname || '?')[0].toUpperCase()}</div>`;
+    }
+
+    function formatDate(d) { return new Date(d).toLocaleDateString('ru-RU', { day: '2-digit', month: 'short', year: 'numeric' }); }
+
+    async function loadStats() {
+      const r = await fetch(`${API}/admin/stats`, { headers: headers() });
+      const d = await r.json();
+      document.getElementById('statUsers').textContent = d.totalUsers;
+      document.getElementById('statUstalar').textContent = d.totalUstalar;
+      document.getElementById('statPending').textContent = d.pendingCount;
+      document.getElementById('pendingBadge').textContent = d.pendingCount;
+    }
+
+    async function loadPending(forDash = false) {
+      const r = await fetch(`${API}/admin/pending`, { headers: headers() });
+      const data = await r.json();
+      const container = document.getElementById(forDash ? 'dashPendingList' : 'pendingList');
+      if (!data.length) {
+        container.innerHTML = `<div class="empty-state"><i class="bi bi-inbox"></i>Нет ожидающих объявлений</div>`;
+        return;
+      }
+      const rows = (forDash ? data.slice(0, 5) : data).map(u => `
+        <tr>
+          <td>${avatarEl(u)} <span style="margin-left:8px">${u.fullname}</span></td>
+          <td>${u.phone}</td>
+          <td>${u.job}</td>
+          <td>${u.city}</td>
+          <td>${formatDate(u.created_at || u.createdAt)}</td>
+          ${!forDash ? `<td style="display:flex;gap:6px">
+            <button class="action-btn btn-approve" onclick="approveUsta(${u.id})"><i class="bi bi-check-lg"></i> Подтвердить</button>
+            <button class="action-btn btn-reject" onclick="rejectUsta(${u.id})"><i class="bi bi-x-lg"></i> Отклонить</button>
+          </td>` : `<td><span class="badge-status pending"><i class="bi bi-clock"></i> Ожидает</span></td>`}
+        </tr>`).join('');
+      container.innerHTML = `
+        <table>
+          <thead><tr><th>Имя</th><th>Телефон</th><th>Специализация</th><th>Город</th><th>Дата</th><th>${forDash ? 'Статус' : 'Действие'}</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }
+
+    async function approveUsta(id) {
+      const r = await fetch(`${API}/admin/approve/${id}`, { method: 'POST', headers: headers() });
+      if (r.ok) { showToast('Объявление подтверждено!'); loadAll(); }
+      else showToast('Ошибка', 'error');
+    }
+
+    async function rejectUsta(id) {
+      if (!confirm('Отклонить это объявление?')) return;
+      const r = await fetch(`${API}/admin/reject/${id}`, { method: 'POST', headers: headers() });
+      if (r.ok) { showToast('Объявление отклонено'); loadAll(); }
+      else showToast('Ошибка', 'error');
+    }
+
+    async function loadUstalar() {
+      const r = await fetch(`${API}/ustalar`);
+      const data = await r.json();
+      const container = document.getElementById('ustalarList');
+      if (!data.length) {
+        container.innerHTML = `<div class="empty-state"><i class="bi bi-people"></i>Нет подтверждённых мастеров</div>`;
+        return;
+      }
+      container.innerHTML = `
+        <table>
+          <thead><tr><th>Мастер</th><th>Телефон</th><th>Специализация</th><th>Город</th><th>Подтверждён</th><th>Действие</th></tr></thead>
+          <tbody>${data.map(u => `
+            <tr>
+              <td>${avatarEl(u)} <span style="margin-left:8px">${u.fullname}</span></td>
+              <td>${u.phone}</td>
+              <td><span class="badge-status approved">${u.job}</span></td>
+              <td>${u.city}</td>
+              <td>${formatDate(u.created_at || u.createdAt)}</td>
+              <td><button class="action-btn btn-delete" onclick="deleteUsta(${u.id})"><i class="bi bi-trash"></i> Удалить</button></td>
+            </tr>`).join('')}
+          </tbody>
+        </table>`;
+    }
+
+    async function deleteUsta(id) {
+      if (!confirm('Удалить этого мастера?')) return;
+      const r = await fetch(`${API}/admin/ustalar/${id}`, { method: 'DELETE', headers: headers() });
+      if (r.ok) { showToast('Мастер удалён'); loadUstalar(); loadStats(); }
+      else showToast('Ошибка', 'error');
+    }
+
+    async function loadUsers() {
+      const r = await fetch(`${API}/admin/users`, { headers: headers() });
+      const data = await r.json();
+      const container = document.getElementById('usersList');
+      container.innerHTML = `
+        <table>
+          <thead><tr><th>#</th><th>Имя</th><th>Телефон</th><th>Роль</th><th>Дата регистрации</th><th>Действие</th></tr></thead>
+          <tbody>${data.map((u, i) => `
+            <tr>
+              <td style="color:var(--muted)">${i + 1}</td>
+              <td><div class="avatar-placeholder" style="display:inline-flex">${u.fullname[0].toUpperCase()}</div> <span style="margin-left:8px">${u.fullname}</span></td>
+              <td>${u.phone}</td>
+              <td><span class="badge-status ${u.role}">${u.role === 'admin' ? '👑 Админ' : '👤 Пользователь'}</span></td>
+              <td>${formatDate(u.created_at || u.createdAt)}</td>
+              <td>${u.role !== 'admin' ? `<button class="action-btn btn-delete" onclick="deleteUser(${u.id})"><i class="bi bi-person-x"></i> Удалить</button>` : '<span style="color:var(--muted);font-size:0.8rem">Защищён</span>'}</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>`;
+    }
+
+    async function deleteUser(id) {
+      if (!confirm('Удалить этого пользователя?')) return;
+      const r = await fetch(`${API}/admin/users/${id}`, { method: 'DELETE', headers: headers() });
+      if (r.ok) { showToast('Пользователь удалён'); loadUsers(); loadStats(); }
+      else showToast('Ошибка', 'error');
+    }
+
+    async function loadAll() { await loadStats(); await loadPending(true); }
+    loadAll();
+  </script>
+</body>
+</html>
